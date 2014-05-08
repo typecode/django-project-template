@@ -13,9 +13,6 @@ def root(*args):
 
 sys.path.append(root('apps'))
 
-DEBUG = 'DJANGO_DEBUG' in os.environ
-TEMPLATE_DEBUG = DEBUG
-
 env = root('deploy', 'env')
 if os.path.exists(env):
     with open(env, 'r') as f:
@@ -25,6 +22,9 @@ else:
     env = 'development'
 
 envdir.open(root('deploy', env))
+
+DEBUG = 'DJANGO_DEBUG' in os.environ
+TEMPLATE_DEBUG = DEBUG
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'BACONBACONBACON')
 
