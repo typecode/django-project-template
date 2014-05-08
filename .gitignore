@@ -1,0 +1,14 @@
+# assorted
+*.pyc
+*.log
+.DS_Store
+.directory
+
+# statics
+static/lib
+
+# deploy
+deploy/env
+
+# editors
+sftp-config.json
