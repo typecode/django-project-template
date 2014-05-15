@@ -1,5 +1,7 @@
 Django==1.6.5
 django-suit==0.2.8
-dj-database-url==0.3.0
+dj-database-url==0.3.
+easy-thumbnails==2.0.1
 envdir==0.6.1
+psycopg2==2.5.3
 wsgiref==0.1.2
