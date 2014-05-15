@@ -39,7 +39,9 @@ else:
 SECRET_KEY = '0%i2zbd9gs^(_e)!a!=^2$-(o$z(xdw2+!g=e8n$4q$p#q36@^'
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
