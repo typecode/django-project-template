@@ -68,6 +68,13 @@ less:
 
         - require:
             - pkg: npm
+            
+yuglify:
+    npm:
+        - installed
+
+        - require:
+            - pkg: npm
 
 # ssh config needs the tc-deploy key to pull private repos
 /home/vagrant/.ssh/config:
