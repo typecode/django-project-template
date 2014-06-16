@@ -4,6 +4,7 @@ build-essential:
     pkg:
         - installed
 
+# python and pip packages
 python-dev:
     pkg:
         - installed
@@ -30,9 +31,43 @@ virtualenvwrapper:
         - require:
             - pip: virtualenv
 
+# postgres dev
 libpq-dev:
     pkg:
         - installed
+
+# node and npm packages
+nodejs:
+    pkg:
+        - installed
+
+nodejs-legacy:
+    pkg:
+        - installed
+
+        - require:
+            - pkg: nodejs
+
+npm:
+    pkg:
+        - installed
+
+        - require:
+            - pkg: nodejs
+
+bower:
+    npm:
+        - installed
+
+        - require:
+            - pkg: npm
+
+less:
+    npm:
+        - installed
+
+        - require:
+            - pkg: npm
 
 # ssh config needs the tc-deploy key to pull private repos
 /home/vagrant/.ssh/config:
