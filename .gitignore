@@ -12,3 +12,6 @@ deploy/env
 
 # editors
 sftp-config.json
+
+# vagrant
+.vagrant

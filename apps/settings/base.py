@@ -26,7 +26,7 @@ envdir.open(root('deploy', env))
 DEBUG = 'DJANGO_DEBUG' in os.environ
 TEMPLATE_DEBUG = DEBUG
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'BACONBACONBACON')
+SECRET_KEY = os.environ.get('SECRET_KEY', '{{ secret_key }}')
 
 if 'ALLOWED_HOSTS' in os.environ:
     ALLOWED_HOSTS = [
@@ -35,16 +35,18 @@ if 'ALLOWED_HOSTS' in os.environ:
 else:
     ALLOWED_HOSTS = []
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0%i2zbd9gs^(_e)!a!=^2$-(o$z(xdw2+!g=e8n$4q$p#q36@^'
-
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'easy_thumbnails',
+    'pipeline',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -92,6 +94,21 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+PIPELINE_COMPILERS = (
+    'pipeline.compilers.less.LessCompiler',
+)
+
+PIPELINE_CSS = {
+    'main': {
+        'source_filenames': (
+            'styles/main.less',
+        ),
+        'output_filename': 'styles/main.css',
+    },
+}
 
 ###
 ### Templates
