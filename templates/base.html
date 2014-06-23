@@ -11,6 +11,8 @@
 
         <link rel='stylesheet' type='text/css' href='{% static "styles/main.css" %}'>
 
+        {% include 'utils/header.html' %}
+
         <script src='{% static "scripts/require.conf.js" %}'></script>
         <script>
             require.baseUrl = '{% static "" %}';

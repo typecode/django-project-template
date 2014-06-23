@@ -1,0 +1,7 @@
+{% if BUGHERD_KEY %}
+    {% include 'utils/_bugherd.html' %}
+{% endif %}
+
+{% if GOOGLE_ANALYTICS_KEY and GOOGLE_ANALYTICS_DOMAIN %}
+    {% include 'utils/_google_analytics.html' %}
+{% endif %}

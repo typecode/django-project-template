@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'BACONBACONBACON')
 
 if 'ALLOWED_HOSTS' in os.environ:
     ALLOWED_HOSTS = [
-        host.trim() for host in os.environ['ALLOWED_HOSTS'].split(',')
+        host.strip() for host in os.environ['ALLOWED_HOSTS'].split(',')
     ]
 else:
     ALLOWED_HOSTS = []
@@ -123,7 +123,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 ###
 ### Build
 ###
-if 'BUILD_NUMBER' in os.environ:
+if '_BUILD_NUMBER' in os.environ:
     BUILD_NUMBER = os.environ['BUILD_NUMBER']
 
 ###
@@ -188,3 +188,42 @@ if 'LOG_FILE' in os.environ:
         'delay': True,
     }
     LOGGING['loggers']['apps']['handlers'] += ['file']
+
+
+###
+### Sentry
+###
+if 'SENTRY_RAVEN_DSN' in os.environ:
+    RAVEN_CONFIG = {
+        'dsn': os.environ['SENTRY_RAVEN_DSN'],
+    }
+
+    INSTALLED_APPS = INSTALLED_APPS + (
+        'raven.contrib.django.raven_compat',
+    )
+
+
+###
+### Google Analytics
+###
+if 'GOOGLE_ANALYTICS_KEY' in os.environ and \
+   'GOOGLE_ANALYTICS_DOMAIN' in os.environ:
+
+    GOOGLE_ANALYTICS_KEY = os.environ['GOOGLE_ANALYTICS_KEY']
+    GOOGLE_ANALYTICS_DOMAIN = os.environ['GOOGLE_ANALYTICS_DOMAIN']
+
+    TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+        'utils.context_processors.google_analytics',
+    )
+
+
+###
+### Bugherd
+###
+if 'BUGHERD_KEY' in os.environ:
+
+    BUGHERD_KEY = os.environ['BUGHERD_KEY']
+
+    TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+        'utils.context_processors.bugherd',
+    )
