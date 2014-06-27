@@ -6,4 +6,4 @@ easy-thumbnails==2.0.1
 envdir==0.6.1
 psycopg2==2.5.3
 wsgiref==0.1.2
-raven=5.0.0
+raven==5.0.0
