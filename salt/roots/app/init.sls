@@ -31,6 +31,10 @@ virtualenvwrapper:
         - require:
             - pip: virtualenv
 
+libjpeg8-dev:
+    pkg:
+        - installed
+
 # postgres dev
 libpq-dev:
     pkg:
@@ -68,7 +72,7 @@ less:
 
         - require:
             - pkg: npm
-            
+
 yuglify:
     npm:
         - installed
@@ -114,6 +118,7 @@ yuglify:
         - require:
             - pip: virtualenv
             - pkg: libpq-dev
+            - pkg: libjpeg8-dev
             - file: /home/vagrant/.ssh/config
             - file: /home/vagrant/.ssh/tc-deploy
             - file: /home/vagrant/.ssh/tc-deploy.pub
